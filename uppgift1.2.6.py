@@ -22,7 +22,7 @@ while i < antal:
     if gis == tal:
         i=antal+1
     elif i == antal:
-        print("Du har slut på gissningar")
+        print("Haha, du har slut på gissningar, rätt svar var", tal)
     
 
 
