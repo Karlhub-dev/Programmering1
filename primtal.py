@@ -8,7 +8,7 @@ while tal%n == 0:
     
 
 
-
+print("hej")
 
 
 
