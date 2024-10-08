@@ -17,14 +17,17 @@ while loop:
 
    if menu=="2":
       print("Här är alla temperaturmätningar", tempList)
-      print("Medeltemperaturen är", average/naverage)
+      print("Medeltemperaturen är", round(average/naverage,2))
 
    if menu=="3":
       detemp=float(input("Ta bort temperaturmätning: "))
       if detemp in (tempList):
          tempList.remove(detemp)
+         naverage-=1
+         average-=detemp
       else:
          print(detemp, "finns inte i listan")
+      
 
    if menu=="4":
       break
