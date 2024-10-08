@@ -15,7 +15,7 @@ for i in range(1,6):
         rmening=mening
     
 
-print("Den längsta meningen var", rmening, "\nMedellängden på meningarna är", round(sum/num,2))
+print("Den längsta meningen var", rmening, "\nMedellängden på meningarna är", round(sum/num,2), "tecken långa")
 
 
 
