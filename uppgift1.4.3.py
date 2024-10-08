@@ -1,6 +1,8 @@
 meningList= []
 sum = 0
 num=0
+mensize=0
+
 
 for i in range(1,6):
     mening=input("Skriv en mening ")
@@ -8,11 +10,13 @@ for i in range(1,6):
     sum += size
     num += 1
     meningList.append(size)
-    if size > (meningList[num-1]):
-        print(mening)
+    if size > mensize:
+        mensize=size
+        rmening=mening
+    
 
-meningList.sort()
-print(meningList)
+print("Den längsta meningen var", rmening, "\nMedellängden på meningarna är", round(sum/num,2))
+
 
 
 
