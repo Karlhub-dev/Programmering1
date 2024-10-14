@@ -102,9 +102,10 @@ while True:
         cardList=[]
         compcardList=[]
 
-        loop=2
+        cardcount=0
+        ccardcount=[]
 
-        for i in range(0,loop):
+        for i in range(0,2):
 
             color=random.randint(1,4)
             if color==1:
@@ -117,19 +118,26 @@ while True:
                 color="Spader"
 
             value=random.randint(1,13)
+
+            cardcount+=value
+
             if value==11:
+                cardcount-=1
                 value="Knäckt"
             elif value==12:
+                cardcount-=2
                 value="Dam"
             elif value==13:
+                cardcount-=3
                 value="Kung"
             elif value==1:
                 value=="Ess"
             
             card=color+" "+str(value)
             cardList.append(card)
+            
 
-        for i in range(0,21):
+        for i in range(0,10):
 
             ccolor=random.randint(1,4)
             if ccolor==1:
@@ -142,51 +150,72 @@ while True:
                 ccolor="Spader"
 
             cvalue=random.randint(1,13)
+
+            cvaluek=str(cvalue)
+
             if cvalue==11:
-                cvalue="Knäckt"
+                cvaluek="Knäckt"
             elif cvalue==12:
-                cvalue="Dam"
+                cvaluek="Dam"
             elif cvalue==13:
-                cvalue="Kung"
+                cvaluek="Kung"
             elif cvalue==1:
-                cvalue=="Ess"
+                cvaluek=="Ess"
+
+            if cvalue > 10:
+                cvalue=10
+
+            ccardcount.append(cvalue)
             
-            ccard=ccolor+" "+str(cvalue)
+            ccard=ccolor+" "+cvaluek
             compcardList.append(ccard)
 
         print("Dina kort är", cardList)
         print("Dealerna har", compcardList[0])
 
-        move=input("Vill du fortsätta eller stanna? ")
+        while True:
+        
+            move=input("Vill du fortsätta eller stanna? ")
 
-        if move=="fortsätta":
-            color=random.randint(1,4)
-            if color==1:
-                color="Klöver"
-            if color==2:
-                color="Ruter"
-            if color==3:
-                color="Hjärter"
-            if color==4:
-                color="Spader"
+            if move=="fortsätta":
+                color=random.randint(1,4)
+                if color==1:
+                    color="Klöver"
+                if color==2:
+                    color="Ruter"
+                if color==3:
+                    color="Hjärter"
+                if color==4:
+                    color="Spader"
 
-            value=random.randint(1,13)
-            if value==11:
-                value="Knäckt"
-            elif value==12:
-                value="Dam"
-            elif value==13:
-                value="Kung"
-            elif value==1:
-                value=="Ess"
+           
+                value=random.randint(1,13)
+                if value==11:
+                    value="Knäckt"
+                elif value==12:
+                    value="Dam"
+                elif value==13:
+                    value="Kung"
+                elif value==1:
+                    value=="Ess"
             
-            card=color+" "+str(value)
-            cardList.append(card)
-            print("Du har nu", cardList)
+                card=color+" "+str(value)
+                cardList.append(card)
+                print("Du har nu", cardList)
 
+            elif move=="stanna":
+                break
 
-        elif move=="stanna":
-            print("Dealern har", compcardList[1,2])
+        print("Dealern har", compcardList[0:2])
+        if ccardcount[0]+ccardcount[1]>cardcount:
+            print("Du förlorade")
+
+        else:
+            print("Dealern har", compcardList[0:3])
+            if ccardcount[0]+ccardcount[1]+ccardcount[2]>cardcount:
+                print("Du förlorade")
+        
+
 
 
             
