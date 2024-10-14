@@ -5,10 +5,8 @@ n=2
 
 
 while tal%n == 0:
-    
-
-
-print("hej")
+    print("hej")
+    n+=1
 
 
 
