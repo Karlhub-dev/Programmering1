@@ -103,7 +103,7 @@ while True:
         compcardList=[]
 
         cardcount=0
-        ccardcount=[]
+        ccardcount=0
 
         for i in range(0,2):
 
@@ -123,7 +123,7 @@ while True:
 
             if value==11:
                 cardcount-=1
-                value="Knäckt"
+                value="Knekt"
             elif value==12:
                 cardcount-=2
                 value="Dam"
@@ -131,13 +131,16 @@ while True:
                 cardcount-=3
                 value="Kung"
             elif value==1:
-                value=="Ess"
+                cardcount+=10
+                value="Ess"
+        
+            
             
             card=color+" "+str(value)
             cardList.append(card)
             
 
-        for i in range(0,10):
+        for i in range(0,2):
 
             ccolor=random.randint(1,4)
             if ccolor==1:
@@ -151,23 +154,23 @@ while True:
 
             cvalue=random.randint(1,13)
 
-            cvaluek=str(cvalue)
+            ccardcount+=cvalue
 
             if cvalue==11:
-                cvaluek="Knäckt"
+                ccardcount-=1
+                cvalue="Knäckt"
             elif cvalue==12:
-                cvaluek="Dam"
+                ccardcount-=2
+                cvalue="Dam"
             elif cvalue==13:
-                cvaluek="Kung"
+                ccardcount-=3
+                cvalue="Kung"
             elif cvalue==1:
-                cvaluek=="Ess"
-
-            if cvalue > 10:
-                cvalue=10
-
-            ccardcount.append(cvalue)
+                ccardcount+=10
+                cvalue="Ess"
+        
             
-            ccard=ccolor+" "+cvaluek
+            ccard=ccolor+" "+str(cvalue)
             compcardList.append(ccard)
 
         print("Dina kort är", cardList)
@@ -190,30 +193,92 @@ while True:
 
            
                 value=random.randint(1,13)
+
+                cardcount+=value
+
                 if value==11:
+                    cardcount-=1
                     value="Knäckt"
                 elif value==12:
+                    cardcount-=2
                     value="Dam"
                 elif value==13:
+                    cardcount-=3
                     value="Kung"
                 elif value==1:
-                    value=="Ess"
+                    cardcount+=10
+                    value="Ess"
+                
             
                 card=color+" "+str(value)
                 cardList.append(card)
                 print("Du har nu", cardList)
+                
 
             elif move=="stanna":
                 break
+        
+        showclist=1
 
-        print("Dealern har", compcardList[0:2])
-        if ccardcount[0]+ccardcount[1]>cardcount:
+        while True:
+
+            print("Dealern har", compcardList[0:showclist])
+
+            if ccardcount>=17:
+                break
+
+            else:
+
+                ccolor=random.randint(1,4)
+
+                if ccolor==1:
+                    ccolor="Klöver"
+                if ccolor==2:
+                    ccolor="Ruter"
+                if ccolor==3:
+                    ccolor="Hjärter"
+                if ccolor==4:
+                    ccolor="Spader"
+
+                cvalue=random.randint(1,13)
+
+                ccardcount+=cvalue
+
+                if cvalue==11:
+                    ccardcount-=1
+                    cvalue="Knäckt"
+                elif cvalue==12:
+                    ccardcount-=2
+                    cvalue="Dam"
+                elif cvalue==13:
+                    ccardcount-=3
+                    cvalue="Kung"
+                elif cvalue==1:
+                    ccardcount+=10
+                    cvalue="Ess"
+            
+                ccard=ccolor+" "+str(cvalue)
+                compcardList.append(ccard)
+                showclist+=1
+        
+        print("Dealern har nu", compcardList)
+
+        if ccardcount==21:
+            print("Dealern har blackjack. Du förlorade")
+        elif cardcount>=22:
+            print("Dealern vart tjock. Du vann")
+        
+        if cardcount==ccardcount:
+            print("Det vart oavgjort")
+        elif cardcount>ccardcount:
+            print("Du vann")
+        elif ccardcount>cardcount:
             print("Du förlorade")
 
-        else:
-            print("Dealern har", compcardList[0:3])
-            if ccardcount[0]+ccardcount[1]+ccardcount[2]>cardcount:
-                print("Du förlorade")
+
+                
+
+                
         
 
 

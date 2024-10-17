@@ -17,14 +17,16 @@ while loop:
         print("Kollar efter dubbleter...")
         check=0
         testList=List
+
         for i in range(0, len(testList)-1):
-            print(i)
+
             tester=testList.count(testList[i])
+
             if tester > 1:
                 print("Det finns en dubblet i listan:", List[i])
-            
                 check+=1
-            print(testList)
+
+
         if check == 0:
             print("Det finns inga dubbleter i listan")
                 
