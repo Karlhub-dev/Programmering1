@@ -110,11 +110,11 @@ while True:
             color=random.randint(1,4)
             if color==1:
                 color="Klöver"
-            if color==2:
+            elif color==2:
                 color="Ruter"
-            if color==3:
+            elif color==3:
                 color="Hjärter"
-            if color==4:
+            elif color==4:
                 color="Spader"
 
             value=random.randint(1,13)
@@ -145,11 +145,11 @@ while True:
             ccolor=random.randint(1,4)
             if ccolor==1:
                 ccolor="Klöver"
-            if ccolor==2:
+            elif ccolor==2:
                 ccolor="Ruter"
-            if ccolor==3:
+            elif ccolor==3:
                 ccolor="Hjärter"
-            if ccolor==4:
+            elif ccolor==4:
                 ccolor="Spader"
 
             cvalue=random.randint(1,13)
@@ -184,11 +184,11 @@ while True:
                 color=random.randint(1,4)
                 if color==1:
                     color="Klöver"
-                if color==2:
+                elif color==2:
                     color="Ruter"
-                if color==3:
+                elif color==3:
                     color="Hjärter"
-                if color==4:
+                elif color==4:
                     color="Spader"
 
            
@@ -233,11 +233,11 @@ while True:
 
                 if ccolor==1:
                     ccolor="Klöver"
-                if ccolor==2:
+                elif ccolor==2:
                     ccolor="Ruter"
-                if ccolor==3:
+                elif ccolor==3:
                     ccolor="Hjärter"
-                if ccolor==4:
+                elif ccolor==4:
                     ccolor="Spader"
 
                 cvalue=random.randint(1,13)
