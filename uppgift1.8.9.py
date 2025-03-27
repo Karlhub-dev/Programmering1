@@ -4,13 +4,11 @@ def menu():
     print("3: multiplikation")
     print("4: Divition")
 
-    choice = input("Välj i menyn ")
-
     try:
-        choice = int(choice)
+        choice = int(input("Välj i menyn "))
     except ValueError:
-        print("Fel inmatning")
-        choice = 0
+        print("Fel inmatning! Välj en av siffrorna i menyn")
+        choice = int(input("Välj i menyn "))
 
     
     if choice >=1 and choice <=4:
@@ -19,30 +17,26 @@ def menu():
     else:
         return(False)
     
-while True:
-    val=menu()
-    while not val:
-        val=menu()
+def mathadd(add1,add2):
+    return(add1+add2)
+def mathsub(sub1,sub2):
+    return(sub1-sub2)
+def mathmul(mul1,mul2):
+    return(mul1*mul2)
+def mathdiv(div1,div2):
+    return(div1/div2)
 
-        
-    if val == 1:
-        num1=float(input("Vad är ditt första tal? "))
-        num2=float(input("Vad är ditt andra tal? "))
-        print("Summan av dina tal är", round((num1-num2),2))
+choice=menu()
 
-    elif val ==2:
-        num1=float(input("Vad är ditt första tal? "))
-        num2=float(input("Vad är ditt andra tal? "))
-        print("Skillnaden mellan dina tal är", round((num1-num2),2))
+num= float(input("Vad är ditt första tal "))
+num2= float(input("Vad är ditt första tal "))
+if choice==1:
+    print("Summan av dina tal är", mathadd(num,num2))
+elif choice==2:
+    print("Skillnaden mellan dina tal är",mathsub(num,num2))
+elif choice==3:
+    print("Produkten av din tal är", mathmul(num,num2))
+elif choice==4:
+    print("Kvoten av dina tal är", mathdiv(num,num2))
 
-    elif val ==3:
-        num1=float(input("Vad är ditt första tal? "))
-        num2=float(input("Vad är ditt andra tal? "))
-        print("Produkten av dina tal är", round((num1*num2),2))
 
-    elif val ==4:
-        num1=float(input("Vad är ditt första tal? "))
-        num2=float(input("Vad är ditt andra tal? "))
-        print("Kvoten av dina tal är", round((num1-num2),2))
-    
-    fort = input("")
