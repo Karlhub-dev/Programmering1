@@ -1,98 +1,58 @@
 import random
 
-# Definiera kortlekarna
-suits = ['Hjärter', 'Ruter', 'Klöver', 'Spader']
-ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
-values = {'2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, '10': 10, 'J': 10, 'Q': 10, 'K': 10, 'A': 11}
-
-# Skapa en kortlek
-def skapa_kortlek():
-    kortlek = []
-    for suit in suits:
-        for rank in ranks:
-            kortlek.append((rank, suit))
-    random.shuffle(kortlek)
-    return kortlek
-
-# Beräkna poäng för handen
-def beräkna_poang(hand):
-    poang = 0
-    antal_ess = 0
-    for rank, suit in hand:
-        poang += values[rank]
-        if rank == 'A':
-            antal_ess += 1
-    while poang > 21 and antal_ess > 0:
-        poang -= 10
-        antal_ess -= 1
-    return poang
-
-# Visa händer
-def visa_hand(hand, spelare=True):
-    if spelare:
-        print("Spelarens hand:", ', '.join([f'{rank} av {suit}' for rank, suit in hand]))
+def cvalue(kort1): 
+    kort1=list(kort1)
+    kort=kort1[1]
+    if kort=="E":
+        cvalue=11
+    elif kort=="Kn":
+        cvalue=10
+    elif kort=="D":
+        cvalue=10
+    elif kort=="K":
+        cvalue=10
     else:
-        print("Dealerns hand:", ', '.join([f'{rank} av {suit}' for rank, suit in hand]))
+        cvalue=int(kort)
+    return(cvalue)
 
-# Spela spelet
-def spela_blackjack():
-    kortlek = skapa_kortlek()
-    spelare_hand = [kortlek.pop(), kortlek.pop()]
-    dealer_hand = [kortlek.pop(), kortlek.pop()]
 
-    # Visa spelarnas hand och dealerens första kort
-    visa_hand(spelare_hand)
-    print(f"Dealern har: {dealer_hand[0][0]} av {dealer_hand[0][1]} och ett dolt kort.")
+color=["♠️", "♥️", "♦️", "♣️"]
+value=["E", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Kn", "D", "K"]
+kortlekList=[] 
+for loop in range(3): 
+        for colorloop in range(4): 
+            for valueloop in range(13):
+                kortlek=[]
+                kortlek.append(color[colorloop])
+                kortlek.append(value[valueloop])
+                kortlekList.append(kortlek)
+random.shuffle(kortlekList)
+    ###########################################################
+    # Skapar tre kortlekar där varje kort är en separat lista #
+    ###########################################################
 
-    while True:
-        poang_spelare = beräkna_poang(spelare_hand)
-        if poang_spelare > 21:
-            print("Du har överstigit 21 poäng! Du förlorade.")
-            return
-        elif poang_spelare == 21:
-            print("Du har 21 poäng! Du vinner!")
-            return
-        
-        val = input("Vill du slå (s) eller stå (s)? ").lower()
-        if val == 's':
-            spelare_hand.append(kortlek.pop())
-            visa_hand(spelare_hand)
-        elif val == 'stå':
-            break
-        else:
-            print("Ogiltigt val. Skriv 's' för slå eller 'stå' för att stå.")
+playerhand=[]
 
-    # Dealerns tur
-    print("Dealern avslöjar sitt dolda kort.")
-    while beräkna_poang(dealer_hand) < 17:
-        dealer_hand.append(kortlek.pop())
-        visa_hand(dealer_hand, spelare=False)
+playerhand.append(kortlekList.pop(0))
 
-    poang_dealer = beräkna_poang(dealer_hand)
-    poang_spelare = beräkna_poang(spelare_hand)
-    
-    # Visa slutresultat
-    if poang_dealer > 21:
-        print("Dealern har överstigit 21 poäng! Du vinner!")
-    elif poang_spelare > poang_dealer:
-        print("Du vinner!")
-    elif poang_spelare < poang_dealer:
-        print("Dealern vinner!")
-    else:
-        print("Det är oavgjort!")
+    ################################################################################
+    # Tar två kort från kortlekarna och appendar till spelarens och dealerns hand #
+    ################################################################################
 
-# Starta spelet
-spela_blackjack()
+print("Spelet har börjat...")
 
 
 
 
 
+    ###################################################################################
+    # Berättar vad spelaren och dealern har för startkort samt appendar två kort till #
+    ###################################################################################
 
+print(playerhand)
+playercvalue = (cvalue(playerhand[0]))
 
-
-
-
+print(playercvalue)
 
 
 
