@@ -53,18 +53,49 @@ def cprint(kort1):
 ###########################################
 
 def val(): #Felkollar frågan "slå eller stå?"
-    try:
+
+    while True:
         val=str(input("Vill du slå eller stå?\n"))
-    except ValueError:
-        val()
+        if val == "slå" or val =="stå":
+            break
+        else:
+            print("Svara slå eller stå")
+    
     return(val)  
 
 def val2(): #Felkollar startfrågan"
-    try:
-        spelstart = str(input("Hej där! Vill du spela lite Black Jack? Vem vet, du kanske vinner stort idag "))
-    except ValueError:
-        val2()
-    return(spelstart)  
+
+
+    print("Hej där, du är nu i världens största och bästa casino som endast erbjuder Black Jack")
+
+    while True:
+        answerList=["ja", "gärna", "absolut", "självklart", "varför inte", "yes", "okej"]
+        answerList2=["nej", "aldrig", "inte en chans", "absolut inte"]
+        val2 = str(input("Vill du spela?\n"))
+        val2=val2.lower()
+        if val2 in answerList:
+            val2="ja"
+            break
+        elif val2 in answerList2:
+            val2="nej"
+            break
+        else:
+            print("Svara ja eller nej")
+   
+    return(val2)  
+
+
+    
+    
+
+
+
+
+
+
+
+
+
 
 def main(money):
 
@@ -99,6 +130,7 @@ def main(money):
 
         if playercvalue == 21:
                 print("BLACKJACK!!")
+                money=2.5*money
                 break
         
 
@@ -170,6 +202,7 @@ def main(money):
                 break
             elif playercvalue == dealercvalue:
                 print("Det blev lika, du får tillbaka dina pengar")
+                break
 
     return(money)
             
@@ -178,27 +211,46 @@ def main(money):
 
 
 
-spelstart=val2
 
+spelstart = val2()
 if spelstart == "ja":
     print("Roligt!")
     time.sleep(1.5)
-    bank = float(input("Hur mycket pengar vill du ta med dig till bordet?"))
+    #######################################################################################################
+    while True:
+        bank=str(input("Hur mycket pengar vill du ta med dig till bordet? "))
+        if "-" in bank:
+            print("Svara med ett positivt nummer din dumbom")
+        else:
+            break
+    bank=bank.replace(" ", "")
+    value=""
+    valuta=""
+    for tecken in bank:
+        if tecken.isdigit():
+            value += tecken
+        else:
+            valuta += tecken
+    bank=float(value)
+        
+
+    #Separerar mängden pengar och valutan från frågan "Hur mycket pengar vill du ta med dig till bordet? "#
+    #######################################################################################################
     time.sleep(1)
     print("Låt oss börja...")
 
     while True:
-        bet=float(input("Hur mycket bettar du?"))
+        bet=float(input("Hur mycket bettar du? "))
         time.sleep(1.5)
-        print("Okej, då får du dina kort")
+        print("Okej, då delas korten ut")
         time.sleep(1.5)
 
         bank-=bet
         bank+=main(bet)
 
-        print("Du har nu", bank, "kr till godo")
+        print("Du har nu", round(bank), valuta, "till godo")
 
-        fortsätta=input("Vill du fortsätta")
+        fortsätta=input("Vill du fortsätta? ")
         if fortsätta == "nej":
             break
         
