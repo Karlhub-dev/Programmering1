@@ -84,18 +84,22 @@ def val2(): #Felkollar startfrågan"
    
     return(val2)  
 
-
+def val3(): #Felkollar frågan "vill du fortsätta?"
+    while True:
+        answerList=["ja", "gärna", "absolut", "självklart", "varför inte", "yes", "okej"]
+        answerList2=["nej", "aldrig", "inte en chans", "absolut inte"]
+        val3 = str(input("Vill du fortsätta?\n"))
+        val3=val3.lower()
+        if val3 in answerList:
+            val3="ja"
+            break
+        elif val3 in answerList2:
+            val3="nej"
+            break
+        else:
+            print("Svara ja eller nej")
     
-    
-
-
-
-
-
-
-
-
-
+    return(val3)
 
 def main(money):
 
@@ -206,17 +210,14 @@ def main(money):
 
     return(money)
             
-
-
-
-
-
-
 spelstart = val2()
+
 if spelstart == "ja":
+
     print("Roligt!")
     time.sleep(1.5)
-    #######################################################################################################
+
+    ###########################################################################################################################
     while True:
         bank=str(input("Hur mycket pengar vill du ta med dig till bordet? "))
         if "-" in bank:
@@ -232,27 +233,49 @@ if spelstart == "ja":
         else:
             valuta += tecken
     bank=float(value)
-        
+    #Separerar mängden pengar och valutan från frågan "Hur mycket pengar vill du ta med dig till bordet? " och felkollar frågan#
+    ############################################################################################################################
 
-    #Separerar mängden pengar och valutan från frågan "Hur mycket pengar vill du ta med dig till bordet? "#
-    #######################################################################################################
     time.sleep(1)
     print("Låt oss börja...")
 
+    #################################################################################################
     while True:
-        bet=float(input("Hur mycket bettar du? "))
+        while True:
+            bet=str(input("Hur mycket bettar du? "))
+            if "-" in bet:
+                print("Svara med ett positivt nummer din dumbom")
+            else:
+                break
+        bet=bet.replace(" ", "")
+        value=""
+        for tecken in bet:
+            if tecken.isdigit():
+                value += tecken
+        bet=float(value)
+    #Separerar mängden pengar och valutan från frågan "Hur mycket bettar du? " och felkollar frågan#
+    ################################################################################################
+
         time.sleep(1.5)
         print("Okej, då delas korten ut")
         time.sleep(1.5)
 
+    #################################################################
         bank-=bet
         bank+=main(bet)
 
         print("Du har nu", round(bank), valuta, "till godo")
 
-        fortsätta=input("Vill du fortsätta? ")
+        fortsätta=val3()
+
         if fortsätta == "nej":
+            print("Tack för att du spelade hoppas vi ses snart igen")
             break
+    #Kör spelet och adderar resultatet till pengarna du startart med#
+    #################################################################
+
+elif spelstart == "nej":
+    print("Då får jag önska dig en trevlig fortsatt dag")
         
 
     
